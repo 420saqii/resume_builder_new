@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../models/education_model.dart';
 import '../../../constants/routes.dart';
+import '../../../services/storage_service.dart';
 
 class EducationController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -130,7 +131,9 @@ class EducationController extends GetxController {
     isLoading.value = true;
 
     try {
-      // TODO: Save to storage or send to next screen
+      // Save education list to storage
+      await StorageService.updateResumeSection('educationList', educationList);
+
       Get.snackbar(
         'Success',
         'Education details saved successfully! Moving to next step...',

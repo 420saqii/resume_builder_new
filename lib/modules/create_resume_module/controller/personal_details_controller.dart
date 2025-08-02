@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../models/personal_details_model.dart';
 import '../../../constants/routes.dart';
+import '../../../services/storage_service.dart';
 
 class PersonalDetailsController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -164,7 +165,10 @@ class PersonalDetailsController extends GetxController {
     try {
       final personalDetails = getPersonalDetails();
 
-      // TODO: Save to storage or send to next screen
+      // Save personal details to storage
+      await StorageService.updateResumeSection(
+          'personalDetails', personalDetails);
+
       Get.snackbar(
         'Success',
         'Personal details saved successfully! Moving to next step...',

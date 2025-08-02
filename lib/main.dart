@@ -16,6 +16,9 @@ import 'modules/create_resume_module/ui/personal_details_screen.dart';
 import 'modules/create_resume_module/ui/education_screen.dart';
 import 'modules/create_resume_module/ui/skills_screen.dart';
 import 'modules/create_resume_module/ui/experience_screen.dart';
+import 'modules/create_resume_module/ui/current_info_screen.dart';
+import 'modules/create_resume_module/ui/language_screen.dart';
+import 'modules/create_resume_module/ui/resume_preview_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -108,6 +111,13 @@ class MyApp extends StatelessWidget {
             GetPage(name: Routes.skills, page: () => const SkillsScreen()),
             GetPage(
                 name: Routes.experience, page: () => const ExperienceScreen()),
+            GetPage(
+                name: Routes.currentInfo,
+                page: () => const CurrentInfoScreen()),
+            GetPage(name: Routes.languages, page: () => const LanguageScreen()),
+            GetPage(
+                name: Routes.resumePreview,
+                page: () => const ResumePreviewScreen()),
           ],
         );
       },

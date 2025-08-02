@@ -156,32 +156,67 @@ class SkillsScreen extends StatelessWidget {
                           ),
                           SizedBox(height: 16.h),
                         ],
-                        SizedBox(
+                        Container(
                           width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: controller.isFormComplete
-                                ? controller.saveSkills
-                                : null,
-                            style: ElevatedButton.styleFrom(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 24.w,
-                                vertical: 16.h,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12.r),
-                              ),
-                              backgroundColor: controller.isFormComplete
-                                  ? AppColors.primaryBlue
-                                  : AppColors.primaryBorder,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: controller.isFormComplete
+                                  ? [
+                                      AppColors.primaryBlue,
+                                      AppColors.secondaryBlue,
+                                    ]
+                                  : [
+                                      AppColors.primaryBorder,
+                                      AppColors.primaryBorder,
+                                    ],
                             ),
-                            child: Text(
-                              'Save & Continue',
-                              style: TextStyle(
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w600,
-                                color: controller.isFormComplete
-                                    ? AppColors.white
-                                    : AppColors.secondaryText,
+                            borderRadius: BorderRadius.circular(16.r),
+                            boxShadow: controller.isFormComplete
+                                ? [
+                                    BoxShadow(
+                                      color: AppColors.primaryBlue
+                                          .withOpacity(0.3),
+                                      blurRadius: 8,
+                                      offset: const Offset(0, 4),
+                                    ),
+                                  ]
+                                : null,
+                          ),
+                          child: Material(
+                            color: Colors.transparent,
+                            child: InkWell(
+                              onTap: controller.isFormComplete
+                                  ? controller.saveSkills
+                                  : null,
+                              borderRadius: BorderRadius.circular(16.r),
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 24.w,
+                                  vertical: 16.h,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.check_circle_outline,
+                                      color: controller.isFormComplete
+                                          ? AppColors.white
+                                          : AppColors.secondaryText,
+                                      size: 20.sp,
+                                    ),
+                                    SizedBox(width: 12.w),
+                                    Text(
+                                      'Save & Continue',
+                                      style: TextStyle(
+                                        fontSize: 16.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: controller.isFormComplete
+                                            ? AppColors.white
+                                            : AppColors.secondaryText,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),

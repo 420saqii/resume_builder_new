@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../models/experience_model.dart';
 import '../../../constants/routes.dart';
+import '../../../services/storage_service.dart';
 
 class ExperienceController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -184,7 +185,10 @@ class ExperienceController extends GetxController {
     isLoading.value = true;
 
     try {
-      // TODO: Save to storage or send to next screen
+      // Save experience list to storage
+      await StorageService.updateResumeSection(
+          'experienceList', experienceList);
+
       Get.snackbar(
         'Success',
         'Experience details saved successfully! Moving to next step...',
@@ -194,8 +198,8 @@ class ExperienceController extends GetxController {
         duration: const Duration(seconds: 2),
       );
 
-      // TODO: Navigate to next screen (projects or other sections)
-      // Get.toNamed(Routes.projects);
+      // Navigate to languages screen
+      Get.toNamed(Routes.languages);
     } catch (e) {
       Get.snackbar(
         'Error',

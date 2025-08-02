@@ -1,10 +1,12 @@
 import 'dart:convert';
 import 'package:get_storage/get_storage.dart';
 import '../models/user_model.dart';
+import '../models/resume_data_model.dart';
 
 class StorageService {
   static const String _userKey = 'user_data';
   static const String _isLoggedInKey = 'is_logged_in';
+  static const String _resumeDataKey = 'resume_data';
 
   static final GetStorage _storage = GetStorage();
 
@@ -43,6 +45,7 @@ class StorageService {
   static Future<void> clearAll() async {
     await _storage.remove(_userKey);
     await _storage.remove(_isLoggedInKey);
+    await _storage.remove(_resumeDataKey);
   }
 
   // Update specific user field
@@ -80,5 +83,61 @@ class StorageService {
       }
     }
     return null;
+  }
+
+  // Resume Data Storage Methods
+  static Future<void> saveResumeData(ResumeData resumeData) async {
+    await _storage.write(_resumeDataKey, jsonEncode(resumeData.toJson()));
+  }
+
+  static ResumeData? getResumeData() {
+    final resumeDataJson = _storage.read(_resumeDataKey);
+    if (resumeDataJson != null) {
+      try {
+        final Map<String, dynamic> resumeMap = jsonDecode(resumeDataJson);
+        return ResumeData.fromJson(resumeMap);
+      } catch (e) {
+        print('Error parsing resume data: $e');
+        return null;
+      }
+    }
+    return null;
+  }
+
+  static Future<void> updateResumeSection(String section, dynamic data) async {
+    final currentResume = getResumeData() ?? ResumeData();
+
+    ResumeData updatedResume;
+    switch (section) {
+      case 'personalDetails':
+        updatedResume = currentResume.copyWith(personalDetails: data);
+        break;
+      case 'educationList':
+        updatedResume = currentResume.copyWith(educationList: data);
+        break;
+      case 'skillsList':
+        updatedResume = currentResume.copyWith(skillsList: data);
+        break;
+      case 'experienceList':
+        updatedResume = currentResume.copyWith(experienceList: data);
+        break;
+      case 'languageList':
+        updatedResume = currentResume.copyWith(languageList: data);
+        break;
+      case 'currentInfo':
+        updatedResume = currentResume.copyWith(currentInfo: data);
+        break;
+      case 'selectedTemplate':
+        updatedResume = currentResume.copyWith(selectedTemplate: data);
+        break;
+      default:
+        return;
+    }
+
+    await saveResumeData(updatedResume);
+  }
+
+  static Future<void> clearResumeData() async {
+    await _storage.remove(_resumeDataKey);
   }
 }

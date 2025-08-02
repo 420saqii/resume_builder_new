@@ -9,6 +9,9 @@ class Routes {
   static const String education = '/education';
   static const String skills = '/skills';
   static const String experience = '/experience';
+  static const String currentInfo = '/current-info';
+  static const String languages = '/languages';
+  static const String resumePreview = '/resume-preview';
 
   // Add more routes here as the app grows
   // static const String profile = '/profile';
