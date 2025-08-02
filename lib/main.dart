@@ -14,6 +14,7 @@ import 'modules/auth_module/controller/auth_controller.dart';
 import 'modules/create_resume_module/ui/select_design.dart';
 import 'modules/create_resume_module/ui/personal_details_screen.dart';
 import 'modules/create_resume_module/ui/education_screen.dart';
+import 'modules/create_resume_module/ui/skills_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -103,6 +104,7 @@ class MyApp extends StatelessWidget {
                 page: () => const PersonalDetailsScreen()),
             GetPage(
                 name: Routes.education, page: () => const EducationScreen()),
+            GetPage(name: Routes.skills, page: () => const SkillsScreen()),
           ],
         );
       },

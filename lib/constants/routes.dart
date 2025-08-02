@@ -7,6 +7,7 @@ class Routes {
   static const String selectDesign = '/select-design';
   static const String personalDetails = '/personal-details';
   static const String education = '/education';
+  static const String skills = '/skills';
 
   // Add more routes here as the app grows
   // static const String profile = '/profile';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../models/education_model.dart';
+import '../../../constants/routes.dart';
 
 class EducationController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -138,9 +139,6 @@ class EducationController extends GetxController {
         colorText: Colors.white,
         duration: const Duration(seconds: 2),
       );
-
-      // TODO: Navigate to next screen (experience details)
-      // Get.toNamed(Routes.experienceDetails);
     } catch (e) {
       Get.snackbar(
         'Error',
@@ -149,8 +147,24 @@ class EducationController extends GetxController {
         backgroundColor: Colors.red,
         colorText: Colors.white,
       );
+      isLoading.value = false;
+      return;
     } finally {
       isLoading.value = false;
+    }
+
+    // Navigate to skills screen (outside try-catch to avoid navigation errors)
+    try {
+      Get.toNamed(Routes.skills);
+    } catch (e) {
+      print('Navigation error: $e');
+      Get.snackbar(
+        'Navigation Error',
+        'Failed to navigate to skills screen',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
     }
   }
 }
