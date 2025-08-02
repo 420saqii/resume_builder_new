@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../models/personal_details_model.dart';
+import '../../../constants/routes.dart';
 
 class PersonalDetailsController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -173,8 +174,8 @@ class PersonalDetailsController extends GetxController {
         duration: const Duration(seconds: 2),
       );
 
-      // TODO: Navigate to next screen (education details)
-      // Get.toNamed(Routes.educationDetails);
+      // Navigate to education screen
+      Get.toNamed(Routes.education);
     } catch (e) {
       Get.snackbar(
         'Error',
