@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'constants/colors.dart';
+import 'constants/routes.dart';
 import 'modules/auth_module/controller/auth_controller.dart';
 
 class HomePage extends StatelessWidget {
@@ -92,7 +93,7 @@ class HomePage extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  // TODO: Navigate to template selection screen
+                  Get.toNamed(Routes.selectDesign);
                 },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.symmetric(
@@ -113,7 +114,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height:12.h,
+              height: 12.h,
             ),
           ],
         ),

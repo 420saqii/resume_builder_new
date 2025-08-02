@@ -11,6 +11,8 @@ import 'home_page.dart';
 import 'services/storage_service.dart';
 import 'modules/auth_module/ui/auth_screen.dart';
 import 'modules/auth_module/controller/auth_controller.dart';
+import 'modules/create_resume_module/select_design.dart';
+import 'modules/create_resume_module/ui/personal_details_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -92,6 +94,12 @@ class MyApp extends StatelessWidget {
           getPages: [
             GetPage(name: Routes.auth, page: () => const AuthScreen()),
             GetPage(name: Routes.home, page: () => const HomePage()),
+            GetPage(
+                name: Routes.selectDesign,
+                page: () => const SelectResumeDesign()),
+            GetPage(
+                name: Routes.personalDetails,
+                page: () => const PersonalDetailsScreen()),
           ],
         );
       },
