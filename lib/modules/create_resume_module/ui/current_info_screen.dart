@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../../constants/colors.dart';
 import '../controller/current_info_controller.dart';
 import '../../../widgets/custom_text_field.dart';
+import '../../../widgets/step_indicator.dart';
 
 class CurrentInfoScreen extends StatelessWidget {
   const CurrentInfoScreen({super.key});
@@ -25,6 +26,10 @@ class CurrentInfoScreen extends StatelessWidget {
           icon: Icon(Icons.arrow_back, size: 20.sp),
           onPressed: () => Get.back(),
         ),
+        actions: [
+          const StepIndicator(currentStep: 6, totalSteps: 7),
+          SizedBox(width: 16.w),
+        ],
       ),
       body: GestureDetector(
         onTap: () {

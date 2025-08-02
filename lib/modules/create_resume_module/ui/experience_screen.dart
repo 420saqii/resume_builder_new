@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../../constants/colors.dart';
 import '../controller/experience_controller.dart';
 import '../../../widgets/custom_text_field.dart';
+import '../../../widgets/step_indicator.dart';
 import '../../../models/experience_model.dart';
 
 class ExperienceScreen extends StatelessWidget {
@@ -26,6 +27,10 @@ class ExperienceScreen extends StatelessWidget {
           icon: Icon(Icons.arrow_back, size: 20.sp),
           onPressed: () => Get.back(),
         ),
+        actions: [
+          const StepIndicator(currentStep: 4, totalSteps: 7),
+          SizedBox(width: 16.w),
+        ],
       ),
       body: GestureDetector(
         onTap: () {

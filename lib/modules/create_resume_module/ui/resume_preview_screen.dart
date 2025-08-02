@@ -10,6 +10,7 @@ import '../../../models/language_model.dart';
 import '../../../models/current_info_model.dart';
 import '../../../models/resume_data_model.dart';
 import '../../../services/storage_service.dart';
+import '../../../widgets/step_indicator.dart';
 
 class ResumePreviewScreen extends StatelessWidget {
   const ResumePreviewScreen({super.key});
@@ -32,6 +33,8 @@ class ResumePreviewScreen extends StatelessWidget {
           onPressed: () => Get.back(),
         ),
         actions: [
+          const StepIndicator(currentStep: 7, totalSteps: 7),
+          SizedBox(width: 8.w),
           IconButton(
             icon: Icon(Icons.edit, size: 20.sp),
             onPressed: () {

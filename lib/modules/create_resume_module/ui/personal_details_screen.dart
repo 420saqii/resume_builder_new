@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import '../../../constants/colors.dart';
 import '../controller/personal_details_controller.dart';
 import '../../../widgets/custom_text_field.dart';
+import '../../../widgets/step_indicator.dart';
 
 class PersonalDetailsScreen extends StatelessWidget {
   const PersonalDetailsScreen({super.key});
@@ -28,6 +29,10 @@ class PersonalDetailsScreen extends StatelessWidget {
           icon: Icon(Icons.arrow_back, size: 20.sp),
           onPressed: () => Get.back(),
         ),
+        actions: [
+          const StepIndicator(currentStep: 1, totalSteps: 7),
+          SizedBox(width: 16.w),
+        ],
       ),
       body: GestureDetector(
         onTap: () {
