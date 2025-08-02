@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../models/skill_model.dart';
+import '../../../constants/routes.dart';
 
 class SkillsController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -104,8 +105,8 @@ class SkillsController extends GetxController {
         duration: const Duration(seconds: 2),
       );
 
-      // TODO: Navigate to next screen (experience details)
-      // Get.toNamed(Routes.experienceDetails);
+      // Navigate to experience screen
+      Get.toNamed(Routes.experience);
     } catch (e) {
       Get.snackbar(
         'Error',
